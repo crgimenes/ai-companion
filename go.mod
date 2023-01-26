@@ -2,9 +2,12 @@ module crg.eti.br/go/ai-companion
 
 go 1.19
 
-require crg.eti.br/go/config v1.4.10
+require (
+	crg.eti.br/go/config v1.4.10
+	github.com/PullRequestInc/go-gpt3 v1.1.11
+)
 
 require (
 	github.com/fsnotify/fsnotify v1.6.0 // indirect
-	golang.org/x/sys v0.3.0 // indirect
+	golang.org/x/sys v0.4.0 // indirect
 )
