@@ -1,9 +1,9 @@
 module crg.eti.br/go/ai-companion
 
-go 1.19
+go 1.20
 
 require (
-	crg.eti.br/go/config v1.4.10
+	crg.eti.br/go/config v1.4.12
 	github.com/PullRequestInc/go-gpt3 v1.1.11
 )
 
