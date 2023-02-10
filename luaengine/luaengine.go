@@ -20,10 +20,10 @@ func New() *LuaExtender {
 }
 
 // CompileLua reads the passed lua file from disk and compiles it.
-func (le *LuaExtender) Compile(filePath string) (*lua.FunctionProto, error) {
+func (le *LuaExtender) Compile(filePath string) error {
 	file, err := os.Open(filePath)
 	if err != nil {
-		return nil, err
+		return err
 	}
 	defer file.Close()
 
@@ -31,15 +31,11 @@ func (le *LuaExtender) Compile(filePath string) (*lua.FunctionProto, error) {
 
 	chunk, err := parse.Parse(reader, filePath)
 	if err != nil {
-		return nil, err
+		return err
 	}
 
-	proto, err := lua.Compile(chunk, filePath)
-	if err != nil {
-		return nil, err
-	}
-
-	return proto, nil
+	le.proto, err = lua.Compile(chunk, filePath)
+	return err
 }
 
 // DoCompiledFile takes a FunctionProto, as returned by CompileLua, and runs it in the LState. It is equivalent

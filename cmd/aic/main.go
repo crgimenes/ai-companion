@@ -7,6 +7,7 @@ import (
 	"log"
 	"os"
 
+	"crg.eti.br/go/ai-companion/luaengine"
 	"crg.eti.br/go/config"
 	_ "crg.eti.br/go/config/ini"
 	"github.com/PullRequestInc/go-gpt3"
@@ -26,6 +27,13 @@ func readStdin() string {
 }
 
 func main() {
+	luaengine := luaengine.New()
+	err := luaengine.Compile("aic.lua")
+	if err != nil {
+		panic(err)
+	}
+	luaengine.InitState()
+
 	var cfg Config
 	config.File = "config.json"
 	config.Parse(&cfg)
@@ -39,7 +47,7 @@ func main() {
 	ctx := context.Background()
 
 	//buf := strings.Builder{}
-	err := client.CompletionStreamWithEngine(ctx, gpt3.TextDavinci003Engine, gpt3.CompletionRequest{
+	err = client.CompletionStreamWithEngine(ctx, gpt3.TextDavinci003Engine, gpt3.CompletionRequest{
 		Prompt: []string{
 			prompt,
 		},
