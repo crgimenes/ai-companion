@@ -8,13 +8,13 @@ import (
 	"os"
 
 	"crg.eti.br/go/config"
-	_ "crg.eti.br/go/config/json"
+	_ "crg.eti.br/go/config/ini"
 	"github.com/PullRequestInc/go-gpt3"
 )
 
 type Config struct {
-	Prompt       string `json:"prompt" cfg:"prompt" cfgDefault:"-"`
-	OpenAIAPIKey string `json:"openai_api_key" cfg:"openai_api_key"`
+	Prompt       string `json:"prompt" ini:"prompt" cfg:"prompt" cfgDefault:"-" cfgDescription:"Prompt to use for GPT-3. Use - to read from stdin."`
+	OpenAIAPIKey string `json:"openai_api_key" ini:"openai_api_key" cfg:"openai_api_key" cfgDescription:"OpenAI API key."`
 }
 
 func readStdin() string {
