@@ -54,3 +54,8 @@ func (le *LuaExtender) DoCompiledFile(L *lua.LState, proto *lua.FunctionProto) e
 func (le *LuaExtender) InitState() error {
 	return le.DoCompiledFile(le.luaState, le.proto)
 }
+
+func (le *LuaExtender) Close() error {
+	le.luaState.Close()
+	return nil
+}
