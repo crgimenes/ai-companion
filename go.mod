@@ -5,6 +5,7 @@ go 1.20
 require (
 	crg.eti.br/go/config v1.4.12
 	github.com/PullRequestInc/go-gpt3 v1.1.11
+	github.com/yuin/gopher-lua v1.1.0
 )
 
 require (
