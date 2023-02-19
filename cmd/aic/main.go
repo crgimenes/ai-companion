@@ -33,6 +33,7 @@ func main() {
 		panic(err)
 	}
 	luaengine.InitState()
+	defer luaengine.Close()
 
 	var cfg Config
 	config.File = "config.json"

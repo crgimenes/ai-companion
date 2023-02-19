@@ -55,3 +55,20 @@ func (le *LuaExtender) Close() error {
 	le.luaState.Close()
 	return nil
 }
+
+/*
+L := lua.NewState()
+defer L.Close()
+if err := L.DoFile("double.lua"); err != nil {
+    panic(err)
+}
+if err := L.CallByParam(lua.P{
+    Fn: L.GetGlobal("double"),
+    NRet: 1,
+    Protect: true,
+    }, lua.LNumber(10)); err != nil {
+    panic(err)
+}
+ret := L.Get(-1) // returned value
+L.Pop(1)  // remove received value
+*/
