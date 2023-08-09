@@ -49,6 +49,7 @@ func main() {
 
 	//buf := strings.Builder{}
 	err = client.CompletionStreamWithEngine(ctx, gpt3.TextDavinci003Engine, gpt3.CompletionRequest{
+		//err = client.CompletionStreamWithEngine(ctx, "gpt-3.5-turbo", gpt3.CompletionRequest{
 		Prompt: []string{
 			prompt,
 		},
